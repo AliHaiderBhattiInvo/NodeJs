@@ -6,7 +6,14 @@ const router = express.Router();
 
 router.get("/get", (req, res) => {
   try {
-    cnicModel.findAll().then((result) => {
+    cnicModel.findAll({
+      where: {
+        id_number: 35202
+      },
+      include:{
+        model:models.Users
+      }
+    }).then((result) => {
       res.json(result);
     });
   } catch (error) {
