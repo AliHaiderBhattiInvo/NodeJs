@@ -17,5 +17,16 @@ router.get('/get', (req, res) => {
     });
 })
 
+router.post('/create', async (req, res) => {
+    try {
+        var user = await userModel.create({
+            name: req.body.name
+        })
+        res.status(200).send(user)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
 module.exports = router
 

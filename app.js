@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const courseRoutes = require('./server/routes/coursesRoutes');
-const usersRoutes = require('./server/routes/usersRoutes')
+const usersRoutes = require('./server/routes/usersRoutes');
+const cnicRoutes = require('./server/routes/cnicRoutes')
 
 // Set up the express app
 const app = express();
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/course',courseRoutes);
 app.use('/api/user', usersRoutes)
+app.use('/api/cnic', cnicRoutes)
 
 const port = process.env.PORT || 3000
 app.listen(port,()=>{
