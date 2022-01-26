@@ -1,6 +1,8 @@
 const models = require("../models");
 const cnicModel = models.Cnic;
 const express = require("express");
+const emailJob = require('../jobs/email');
+
 
 const router = express.Router();
 
@@ -32,5 +34,8 @@ router.post("/create", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+router.post('/emailSend', emailJob.scheduleEmail)
+
 
 module.exports = router;
